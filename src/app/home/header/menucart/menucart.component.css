@@ -1,0 +1,15 @@
+.cart{
+  display: flex;
+  margin-left: 40px;
+}
+.cart_count {
+  color: white;
+  background: #228B22;
+  border-radius: 10px;
+  text-align: center;
+
+}
+.cart_content{
+  margin-left: 5px;
+  text-align: center;
+}

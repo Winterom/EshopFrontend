@@ -1,0 +1,10 @@
+.geo_button{
+  position: relative;
+  line-height: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  appearance: none;
+  background: none;
+  border: none;
+}
