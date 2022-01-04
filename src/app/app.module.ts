@@ -11,13 +11,12 @@ import { MainpageComponent } from './home/mainpage/mainpage.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductcardComponent } from './home/mainpage/productcard/productcard.component';
 import { LoginFormComponent } from './home/header/userauth/login-form/login-form.component';
-import {MatButtonModule} from "@angular/material/button";
-import {MatDialogModule} from "@angular/material/dialog";
-import { RegistrFormComponent } from './home/header/userauth/registr-form/registr-form.component';
+import { RegisterFormComponent } from './home/header/userauth/registr-form/register-form.component';
 import { ProfileComponent } from './profile/profile.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,17 +28,17 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
     MainpageComponent,
     ProductcardComponent,
     LoginFormComponent,
-    RegistrFormComponent,
+    RegisterFormComponent,
     ProfileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatButtonModule,
-    MatDialogModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

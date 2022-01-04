@@ -1,23 +1,24 @@
 import { Component } from '@angular/core';
-import {MatDialog} from "@angular/material/dialog";
-import {LoginFormComponent} from "./login-form/login-form.component";
+import {RegisterFormComponent} from "./registr-form/register-form.component";
+import {NgbModal, NgbModalConfig} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-userauth',
   templateUrl: './user-auth.component.html',
-  styleUrls: ['./user-auth.component.css']
+  styleUrls: ['./user-auth.component.css'],
+  providers: [NgbModalConfig, NgbModal]
 })
 export class UserAuthComponent {
 
-  constructor(public dialog: MatDialog) {
-
+  constructor(config: NgbModalConfig, private modalService: NgbModal) {
+    config.backdrop = 'static';
+    config.keyboard = false;
   }
-  openDialog() {
-    const dialogRef = this.dialog.open(LoginFormComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+  openDialogRegistration() {
+    const modalRef = this.modalService.open(RegisterFormComponent);
   }
 
+  openDialogLogin() {
+
+  }
 }

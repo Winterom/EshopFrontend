@@ -1,0 +1,119 @@
+<div class="modal-header">
+  <h4 class="modal-title">Регистрация</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="register-form">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Полное имя</label>
+      <input
+        type="text"
+        formControlName="fullname"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f['fullname'].errors }"
+      />
+      <div *ngIf="submitted && f['fullname'].errors" class="invalid-feedback">
+        <div *ngIf="f['fullname'].errors['required']">Обязательное поле</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Логин</label>
+      <input
+        type="text"
+        formControlName="username"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f['username'].errors }"
+      />
+      <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
+        <div *ngIf="f['username'].errors['required']">Логин обязательное поле</div>
+        <div *ngIf="f['username'].errors['minlength']">
+          Логин должен быть не менее 6 символов
+        </div>
+        <div *ngIf="f['username'].errors['maxlength']">
+          Логин не может быть более 20 символов
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Email</label>
+      <input
+        type="text"
+        formControlName="email"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+      />
+      <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+        <div *ngIf="f['email'].errors['required']">Email обязателен</div>
+        <div *ngIf="f['email'].errors['email']">Email не валиден</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Пароль</label>
+      <input
+        type="password"
+        formControlName="password"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+      />
+      <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+        <div *ngIf="f['password'].errors['required']">Пароль обязателен</div>
+        <div *ngIf="f['password'].errors['minlength']">
+          Пароль должен быть не менее 6 символов
+        </div>
+        <div *ngIf="f['password'].errors['maxlength']">
+          Пароль не должен превышать 40 символов
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Повторите пароль</label>
+      <input
+        type="password"
+        formControlName="confirmPassword"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f['confirmPassword'].errors }"
+      />
+      <div
+        *ngIf="submitted && f['confirmPassword'].errors"
+        class="invalid-feedback"
+      >
+        <div *ngIf="f['confirmPassword'].errors['required']">
+          Требуется подтвердить пароль
+        </div>
+        <div *ngIf="f['confirmPassword'].errors['matching']">
+          Пароли не совпадают
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group form-check">
+      <input
+        type="checkbox"
+        formControlName="acceptTerms"
+        class="form-check-input"
+        id="acceptTerms"
+        [ngClass]="{ 'is-invalid': submitted && f['acceptTerms'].errors }"
+      />
+      <label for="acceptTerms" class="form-check-label">Все прочитал ничего не понял</label>
+      <div *ngIf="submitted && f['acceptTerms'].errors" class="invalid-feedback">
+        Галочку надо поставить
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-success">Зарегистрироваться</button>
+      <button
+        type="button"
+        (click)="onReset()"
+        class="btn btn-light ml-2">
+        Очистить
+      </button>
+    </div>
+  </form>
+</div>
