@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../_services/user.service";
 
 @Component({
@@ -7,10 +7,13 @@ import {UserService} from "../../_services/user.service";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
+  isLogin = false;
   constructor(private userService:UserService) { }
 
   ngOnInit(): void {
+    if(this.userService.readToken()){
+      this.isLogin=true;
+    }
   }
 
 }

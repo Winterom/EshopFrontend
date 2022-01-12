@@ -16,7 +16,13 @@
     </div>
     <app-geo></app-geo>
     <div class="right_part">
-      <app-userauth></app-userauth>
+      <div *ngIf="isLogin; then login,else notLogin"></div>
+      <ng-template #login>
+        <app-user-board></app-user-board>
+      </ng-template>
+      <ng-template #notLogin>
+      <app-userauth ></app-userauth>
+      </ng-template>
     </div>
   </div>
   <div class="menu_bar">

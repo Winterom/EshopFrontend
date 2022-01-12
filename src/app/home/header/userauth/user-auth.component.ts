@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {RegisterFormComponent} from "./registr-form/register-form.component";
 import {NgbModal, NgbModalConfig} from "@ng-bootstrap/ng-bootstrap";
 import {LoginFormComponent} from "./login-form/login-form.component";

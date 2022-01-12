@@ -1,0 +1,4 @@
+.top_bar_user{
+  display: flex;
+  justify-content: space-between;
+}

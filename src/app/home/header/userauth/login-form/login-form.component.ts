@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../../../_services/auth.service";
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
-import {UserService} from "../../../../_services/user.service";
+import {Token_storageService} from "../../../../_services/token_storage.service";
 
 @Component({
   selector: 'app-login-form',
@@ -18,7 +18,7 @@ export class LoginFormComponent {
   errorMessage = '';
   roles: string[] = [];
 
-  constructor(private authService: AuthService, private tokenStorage: UserService, private formBuilder: FormBuilder, public activeModal: NgbActiveModal) {
+  constructor(private authService: AuthService, private tokenStorage: Token_storageService, private formBuilder: FormBuilder, public activeModal: NgbActiveModal) {
     this.form = this.formBuilder.group({
       username: ['', Validators.required],
       password:['',Validators.required]
@@ -36,13 +36,9 @@ export class LoginFormComponent {
     console.log(JSON.stringify(this.form.value, null, 2));
     this.authService.login(this.form.value.username,this.form.value.password).subscribe({
       next: data => {
-        this.tokenStorage.saveToken(data.accessToken);
-        this.tokenStorage.saveUser(data);
-
+        this.tokenStorage.saveToken(data.token);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.roles = this.tokenStorage.getUser().roles;
-        console.log(this.roles);
         this.reloadPage();
       },
       error: err => {
