@@ -11,9 +11,11 @@ export class UserBoardComponent implements OnInit {
   constructor(public userService: UserService) { }
 
   ngOnInit(): void {
+
   }
 
   logOut() {
     this.userService.signOut();
+    window.location.reload();
   }
 }
